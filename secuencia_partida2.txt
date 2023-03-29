@@ -1,0 +1,223 @@
+PARTIDA DE 2:
+
+
+cliente: "/partida/2/client_id
+
+servidor: 
+    - ESPERA 
+	o 
+	- nueva direccion socket
+	
+cliente: <dirnuevososkcet>/client_id
+
+servidor: Mano: espada-11, oro-12, basto-3, copa-3, basto-11, oro-5, Triunfo: oro-1, NumJuagador: X
+#Convertir a array, (espada-11, oro-12, basto-3, copa-3, basto-11, oro-5, oro-1), NumJugador
+
+
+#Ahora empieza la parte normal de la partida:
+#Para la partida de 2 se roba 14 veces -> bucle de catorce veces donde:
+
+for 14 veces:
+
+	servidor: Mesa{2: Null, 1: Null}, Turno{1}, Triunfo{oro-3} 
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: null], Turno{2}, Triunfo{oro-3}
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: espada-3], Turno{Null}, Triunfo{oro-3}
+
+	servidor: Ganador{1}
+	
+	if me llega algo dureante el timeout:
+	servidor: 
+		for clientes:
+			Acciones{Cantar: True, Cambiar: False}
+			
+	timeout si recibo :
+		Serviodr: Canto{1: Null, 2: oro-20}, Triunfo{2}
+		
+	servidor: 
+		for clientes:
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+
+
+cuando se acaba:
+
+servidor: "Arrastre"
+
+
+for 6 veces:
+
+	Servidor: [espada-3, espada-3]
+	servidor: Mesa{2: Null, 1: Null}, Turno{1}, Triunfo{Null}
+	
+	cliente1: A: espada-3
+
+	Servidor: [espada-3, espada-3]	
+	servidor: Mesa{2: espada-3, 1: Null}, Turno{2}, Triunfo{Null} 	
+	
+	cliente: A: copa-12
+	
+	
+	servidor: Mesa{2: espada-3, 1: copa-12}, Turno{Null} 	
+	
+	if me llega algo dureante el timeout:
+	servidor: 
+		for clientes:
+			Acciones{Cantar: True, Cambiar: False}
+			
+	timeout si recibo :
+		Serviodr: Canto{1: Null, 2: oro-20}, Triunfo{2}
+	
+	servidor: Ganador{1}
+
+... asi hasta que se acaba
+
+if puntos de alguno >100:
+	servidor: message = Gana el jugador 1, Puntos1: 110, Puntos2: 23
+	servidor: Final{Ganador: 1, 1: 110, 2: 30}
+else
+	servidor: Vuelta{1: 110, 2: 30}
+	
+se vuelve a empezar todo:
+
+servidor: Mano: [espada-11, oro-12, basto-3, copa-3, basto-11, oro-5, oro-1] NumJuagador: X
+
+
+
+#Ahora empieza la parte normal de la partida:
+#Para la partida de 2 se roba 14 veces -> bucle de catorce veces donde:
+
+for 14 veces:
+
+	servidor: Mesa{2: Null, 1: Null}, Turno{1}, Triunfo{oro-3}
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: null], Turno{2}, Triunfo{oro-3}
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: espada-3], Turno{Null}	
+
+	servidor: Ganador{1}
+	
+	if algun jugador supera los 100 puntos y gana:
+	servidor: servidor: Final{Ganador: 1, 1: 110, 2: 30}
+
+	servidor: 
+		for clientes:
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+			
+
+
+cuando se acaba:
+
+servidor: "Arrastre"
+
+
+for 6 veces:
+
+	Servidor: [espada-3, espada-3]
+	servidor: Mesa{2: Null, 1: Null}, Turno{1}, Triunfo{Null}
+	
+	cliente1: A: espada-3
+
+	Servidor: [espada-3, espada-3]	
+	servidor: Mesa{2: espada-3, 1: Null}, Turno{2}, Triunfo{Null} 	
+	
+	cliente: A: copa-12
+	
+	
+	servidor: Mesa{2: espada-3, 1: copa-12}, Turno{Null} 	
+	
+	servidor: Ganador{1}
+	
+	if algun jugador supera los 100 puntos y gana:
+	servidor: servidor: Final{Gandador: 1, 1: 110, 2: 30}
+
+... asi hasta que se acaba
+
+
+
+
+
+
+
+if 15 seg yo juego su carta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for 14 veces:
+	#Manda al que sea su turno
+	servidor: Tu turno
+
+	#Cliente que lo recibe devuelve carta que ha jugado en formato
+	cliente: N: copa-12
+
+	#Servidor manda a todos los clientes que carta ha sido jugada
+	servidor: Jugada: copa-12
+
+	#Con el segundo jugador lo mismo:
+	servidor: Tu turno
+	cliente: N: espada-3
+	servidor: Jugada: espada-3
+
+	servidor: Ganador_Baza: 1
+	
+	if algun jugador supera los 100 puntos y gana:
+		servidor: message = "Gana el jugador 1, Puntos1: 110, Puntos2: 23
+		y se acaba la partida, sino se sigue o no llega este mensaje
+
+	#Depues el servidor manda carta robada a cada uno
+	servidor: Carta_robada: basto-11
+
+
+cuando se acaba:
+servidor: Arrastre
+
+#Todos los clientes han de devolver su mano en formato:
+cliente: C: copa-12, oro-12, espada-2, basto-3, oro-3, basto-5
+
+for 6 veces:
+
+	#Servidor le dice a quien sea su turno las cartas de su mano que puede jugar
+	servidor: Tu turno: copa-12, oro-12, espada-2, basto-3, oro-3, basto-5
+
+	cliente: A: copa-12
+	servidor: Jugada: copa-12
+
+	servidor: Tu turno: copa-12, oro-12, espada-2, basto-3, oro-3, basto-5
+	cliente: A: basto-5
+	servidor: Jugada: basto-5
+	
+	servidor: Ganador_Baza: 1
+
+	if algun jugador supera los 100 puntos y gana:
+		servidor: message = "Gana el jugador 1, Puntos1: 110, Puntos2: 23
+		y se acaba la partida, sino se sigue o no llega este mensaje	
+
+
+
+
+
+
+
+
+
