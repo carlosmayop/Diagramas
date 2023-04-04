@@ -1,0 +1,135 @@
+PARTIDA DE 2:
+
+(pensar que los num jugadores son 0 y 1)
+
+cliente: "/partida/2/client_id
+
+servidor: 
+    - ESPERA 
+	o 
+	- nueva direccion socket
+	
+cliente: <dirnuevososkcet>/client_id
+	
+cliente: <dirnuevososkcet>/client_id
+
+servidor: {"Cartas": [["basto", 10], ["oro", 4], ["oro", 5], ["oro", 11], ["copa", 7], ["basto", 11]], "Triunfo": ["copa", 10], "Jugador": 1}
+
+
+#Ahora empieza la parte normal de la partida:
+#Para la partida de 2 se roba 14 veces -> bucle de catorce veces donde:
+
+for 14 veces:
+
+	servidor: Mesa{2: Null, 1: Null}, Turno{1}, Triunfo{oro-3}
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: null], Turno{2}, Triunfo{oro-3}
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: espada-3], Turno{Null}	
+
+	servidor: Ganador: 1
+	
+	if algun jugador supera los 100 puntos y gana:
+	servidor: servidor: Final{Ganador: 1, 1: 110, 2: 30}
+
+	servidor: 
+		for clientes:
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+
+cuando se acaba:
+
+servidor: "Arrastre"
+
+
+for 6 veces:
+
+	
+	servidor: {"1": null, "2": null, "Turno": 0, "Triunfo": null}
+	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	
+	cliente1: A: espada-3, numJugador
+
+	servidor: {"1": espada-3, "2": null, "Turno": 0, "Triunfo": null}
+	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]] 	
+	
+	cliente: A: copa-12, NumJugador
+	
+	
+	servidor: Mesa{1: ("espada", 3), 2: ("espada", 3)}, Turno{Null} 	
+	
+	
+	servidor: Ganador: 1  (o seria Ganador: 0)
+
+... asi hasta que se acaba
+
+if puntos de alguno >100:
+	servidor: {Ganador: 1, 0: 110, 1: 30}
+else
+	servidor: {Ganador: Null, 0: 110, 1: 30}
+	
+##############################VUELTAS#################################
+
+servidor: {"Cartas": [["basto", 10], ["oro", 4], ["oro", 5], ["oro", 11], ["copa", 7], ["basto", 11]], "Triunfo": ["copa", 10], "Jugador": 1}
+
+
+#Ahora empieza la parte normal de la partida:
+#Para la partida de 2 se roba 14 veces -> bucle de catorce veces donde:
+
+for 14 veces:
+
+	servidor: Mesa{2: Null, 1: Null}, Turno{1}, Triunfo{oro-3}
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: null], Turno{2}, Triunfo{oro-3}
+
+	cliente1: N: espada-3
+	servidor: Mesa{1: espada-3, 2: espada-3], Turno{Null}	
+
+	servidor: Ganador: 1
+	
+	if algun jugador supera los 100 puntos y gana:
+	servidor: servidor: Final{Ganador: 1, 1: 110, 2: 30}
+
+	if final:
+		servidor: {Ganador: 1, 0: 110, 1: 30}
+
+	servidor: 
+		for clientes:
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+
+cuando se acaba:
+
+servidor: "Arrastre"
+
+
+for 6 veces:
+
+	
+	servidor: {"1": null, "2": null, "Turno": 0, "Triunfo": null}
+	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	
+	cliente1: A: espada-3, numJugador
+
+	servidor: {"1": espada-3, "2": null, "Turno": 0, "Triunfo": null}
+	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]] 	
+	
+	cliente: A: copa-12, NumJugador
+	
+	
+	servidor: Mesa{1: ("espada", 3), 2: ("espada", 3)}, Turno{Null} 	
+	
+	
+	servidor: Ganador: 1  (o seria Ganador: 0)
+
+	if final:
+		servidor: {Ganador: 1, 0: 110, 1: 30}
+
+... asi hasta que se acaba
+
+servidor: {Ganador: 1, 0: 110, 1: 30}
+
+
