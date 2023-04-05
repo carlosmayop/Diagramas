@@ -9,6 +9,9 @@ servidor:
 	o 
 	- nueva direccion socket
 	
+	
+por ahora obviar sala de espera, probad a meter la directamente la direccion http://localhost:8000/partidaX/{clienteid}
+	
 cliente: <dirnuevososkcet>/client_id
 	
 cliente: <dirnuevososkcet>/client_id
