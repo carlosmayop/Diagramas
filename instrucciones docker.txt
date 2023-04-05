@@ -1,0 +1,9 @@
+INSTRUCCIONES DOCKER
+
+descargar archivos y ejecutar en el terminal en el directorio donde estan archivos:
+
+docker build -t server_partida222 .
+
+Y para ejecutar el docker:
+
+ docker run -p 8000:8000 server_partida222
