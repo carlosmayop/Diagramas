@@ -9,12 +9,14 @@ servidor:
 	o 
 	- nueva direccion socket
 	
-	
+!!!!!!!!!!IMPORTANTE!!!!!!!	
 por ahora obviar sala de espera, probad a meter la directamente la direccion http://localhost:8000/partidaX/{clienteid}
 	
 cliente: <dirnuevososkcet>/client_id
 	
 cliente: <dirnuevososkcet>/client_id
+
+y depués de conectaros mandad cualquier mensaje, por ejemplo jose123 entra, cualquier cadena de strin
 
 servidor: {"Cartas": [["basto", 10], ["oro", 4], ["oro", 5], ["oro", 11], ["copa", 7], ["basto", 11]], "Triunfo": ["copa", 10], "Jugador": 1}
 
