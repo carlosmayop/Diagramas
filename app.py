@@ -122,7 +122,7 @@ async def ronda(jugadores_inicial, jugadores, players_connected, triunfo, puntos
         _, v1, v2 = carta.split()  
         palo1, valor1 = v1.split("-")  
         iden = int(v2)  
-        carta_tupla = (palo1, int(valor1))  
+        carta_tupla = [palo1, int(valor1)]  
         
         manos[iden].remove(carta_tupla)
         cartas_jugadas[i] = carta_tupla
@@ -195,7 +195,7 @@ async def arrastre(websocket, jugadores_inicial, jugadores, players_connected, t
         _, v1, v2 = carta.split()  
         palo1, valor1 = v1.split("-")  
         iden = int(v2)  
-        carta_tupla = (palo1, int(valor1))  
+        carta_tupla = [palo1, int(valor1)]  
         
         manos[iden].remove(carta_tupla)
         cartas_jugadas[i] = carta_tupla
