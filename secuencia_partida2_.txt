@@ -41,8 +41,8 @@ for 14 veces:
 
 	servidor: 
 		for clientes:
-			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
-			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+			[[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]]
+			[[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]]
 
 cuando se acaba:
 
