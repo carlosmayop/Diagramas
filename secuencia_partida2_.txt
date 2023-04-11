@@ -51,9 +51,15 @@ servidor: "Arrastre"
 
 for 6 veces:
 
-	
-	servidor: {"1": null, "2": null, "Turno": 0, "Triunfo": null}
+	Primero se manda a cada jugador las cartas que tiene
 	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	
+	Despues el turno de quien es
+	servidor: {"1": null, "2": null, "Turno": 0, "Triunfo": null}
+	
+	Y del que es el turno se le manda que cartas puede jugar de su mano
+	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	
 	
 	cliente1: A: espada-3, numJugador
 
@@ -114,7 +120,13 @@ servidor: "Arrastre"
 for 6 veces:
 
 	
+	Primero se manda a cada jugador las cartas que tiene
+	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	
+	Despues el turno de quien es
 	servidor: {"1": null, "2": null, "Turno": 0, "Triunfo": null}
+	
+	Y del que es el turno se le manda que cartas puede jugar de su mano
 	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
 	
 	cliente1: A: espada-3, numJugador
