@@ -256,7 +256,7 @@ async def arrastre(orden_inicial, orden, triunfo, puntosJugador0, puntosJugador1
     return orden, manos, puntosJugador0, puntosJugador1, indice_ganador 
 
 async def comprobarGanador(puntosJugador0, puntosJugador1):
-    if puntosJugador1 >= 100:
+    if puntosJugador0 >= 100:
         message = {"Ganador": 0, "0": puntosJugador0 ,"1": puntosJugador1}
         message = json.dumps(message)
         await send_message_to_all_sockets(message)
