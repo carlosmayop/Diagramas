@@ -30,12 +30,12 @@ async def main_program():
         
         vueltas = False
         
-        for i in range(14):
+        for i in range(2):
             
             manos = []
             mazo, triunfo, manos = await comienzo_partida()
             
-            for i in range(2):
+            for i in range(14):
                 puntosJugador0, puntosJugador1, manos, orden, orden_inicial = await ronda(triunfo, puntosJugador0, puntosJugador1, manos, orden, orden_inicial)    
                 if vueltas: 
                     ganador = comprobarGanador(puntosJugador0, puntosJugador1)
