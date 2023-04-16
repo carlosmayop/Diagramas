@@ -10,13 +10,13 @@ servidor:
 	- nueva direccion socket
 	
 !!!!!!!!!!IMPORTANTE!!!!!!!	
-por ahora obviar sala de espera, probad a meter la directamente la direccion http://localhost:8000/partidaX/{clienteid}
+por ahora obviar sala de espera, probad a meter la directamente las direcciones para cliente 0 y cliente 1:
 	
-cliente: <dirnuevososkcet>/client_id
+cliente 0 : ws://127.0.0.1:8000/socket/0/clientid
 	
-cliente: <dirnuevososkcet>/client_id
+cliente 1 : ws://127.0.0.1:8000/socket/1/luis
 
-y depués de conectaros mandad cualquier mensaje, por ejemplo jose123 entra, cualquier cadena de strin
+el servidor cuando detecta los dos jugadores conectados, automaticamente empieza la partida:
 
 servidor: {"Cartas": [["basto", 10], ["oro", 4], ["oro", 5], ["oro", 11], ["copa", 7], ["basto", 11]], "Triunfo": ["copa", 10], "Jugador": 1}
 
