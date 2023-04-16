@@ -30,12 +30,12 @@ async def main_program():
         
         vueltas = False
         
-        for i in range(2):
+        for i in range(14):
             
             manos = []
             mazo, triunfo, manos = await comienzo_partida()
             
-            for i in range(14):
+            for i in range(2):
                 puntosJugador0, puntosJugador1, manos, orden, orden_inicial = await ronda(triunfo, puntosJugador0, puntosJugador1, manos, orden, orden_inicial)    
                 if vueltas: 
                     ganador = comprobarGanador(puntosJugador0, puntosJugador1)
@@ -166,7 +166,7 @@ async def ronda(triunfo, puntosJugador0, puntosJugador1, manos, orden, orden_ini
         cartas_jugadas_mandar[orden[i]] = carta_tupla
         puntuacion_cartas.append(carta_tupla)
     
-    mano_send = {"0": cartas_jugadas_mandar[0], "1": cartas_jugadas_mandar[1] ,"Turno": orden[i], "Triunfo": triunfo}
+    mano_send = {"0": cartas_jugadas_mandar[0], "1": cartas_jugadas_mandar[1] ,"Turno": None, "Triunfo": triunfo}
     message = json.dumps(mano_send)
     await send_message_to_all_sockets(message)
     
@@ -237,6 +237,10 @@ async def arrastre(orden_inicial, orden, triunfo, puntosJugador0, puntosJugador1
         cartas_jugadas[i] = carta_tupla
         cartas_jugadas_mandar[orden[i]] = carta_tupla
         puntuacion_cartas.append(carta_tupla)
+        
+    mano_send = {"0": cartas_jugadas_mandar[0], "1": cartas_jugadas_mandar[1] ,"Turno": None, "Triunfo": None}
+    message = json.dumps(mano_send)
+    await send_message_to_all_sockets(message)  
         
     carta_gandora = que_jugador_gana_baza(puntuacion_cartas, triunfo)
     indice_ganador = puntuacion_cartas.index(carta_gandora)
