@@ -102,11 +102,9 @@ def si_puedo_tengo_que_superar(mano, baza, triunfo):
             for x in range(len(mano)):
                 if mano[x][0] == triunfo:
                     cartasTriunfos.append(mano[x])
-            if len(cartasTriunfos) >= 0: 
-                print("AAAAAAAAAAAAAaaaa")
+            if len(cartasTriunfos) > 0: 
                 return cartasTriunfos;
             else: 
-                print("BBBBBBBB")
                 return mano;
 
 def no_tengo_que_superar(mano, baza):
