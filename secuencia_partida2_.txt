@@ -2,21 +2,12 @@ PARTIDA DE 2:
 
 (pensar que los num jugadores son 0 y 1)
 
-cliente: "/partida/2/client_id
+cliente: "/partida2/client_id
 
-servidor: 
-    - ESPERA 
-	o 
-	- nueva direccion socket
-	
-!!!!!!!!!!IMPORTANTE!!!!!!!	
-por ahora obviar sala de espera, probad a meter la directamente las direcciones para cliente 0 y cliente 1:
-	
-cliente 0 : ws://127.0.0.1:8000/socket/0/clientid
-	
-cliente 1 : ws://127.0.0.1:8000/socket/1/luis
 
 el servidor cuando detecta los dos jugadores conectados, automaticamente empieza la partida:
+
+servidor: "Comienza Partida"
 
 servidor: {"Cartas": [["basto", 10], ["oro", 4], ["oro", 5], ["oro", 11], ["copa", 7], ["basto", 11]], "Triunfo": ["copa", 10], "Jugador": 1}
 
@@ -34,15 +25,22 @@ for 14 veces:
 	cliente1: N: espada-3
 	servidor: Mesa{1: espada-3, 2: espada-3], Turno{Null}	
 
-	servidor: Ganador: 1
+	servidor: {Ganador: 1}
 	
-	if algun jugador supera los 100 puntos y gana:
-	servidor: servidor: Final{Ganador: 1, 1: 110, 2: 30}
+	if un juagdor tiene el 7, a ese jugador:
+		servidor: "Cambiar7"
+		cliente: True or cliente: False
+		y si lo ha cambiado, ha dicho true, se avisa a los demas:
+		{Cambiado: numJugador}
+	
+	if alguien canta:
+		servidor: {Canta: 20, Palo: basto, Juagdor: numJugador}
+		otro ejemplo
+		servidor: {Canta: 40, Palo: oro, Jugador: 2}
 
 	servidor: 
 		for clientes:
-			[[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]]
-			[[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]]
+			{Cartas: [[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]]}
 
 cuando se acaba:
 
@@ -52,13 +50,13 @@ servidor: "Arrastre"
 for 6 veces:
 
 	Primero se manda a cada jugador las cartas que tiene
-	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	Servidor: {Cartas: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]}
 	
 	Despues el turno de quien es
 	servidor: {"1": null, "2": null, "Turno": 0, "Triunfo": null}
 	
 	Y del que es el turno se le manda que cartas puede jugar de su mano
-	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	Servidor: {Cartas Posibles: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]}
 	
 	
 	cliente1: A: espada-3, numJugador
@@ -72,7 +70,13 @@ for 6 veces:
 	servidor: Mesa{1: ("espada", 3), 2: ("espada", 3)}, Turno{Null} 	
 	
 	
-	servidor: Ganador: 1  (o seria Ganador: 0)
+	servidor: {Ganador: 1}  (o seria Ganador: 0)
+	if alguien canta:
+		servidor: {Canta: 20, Palo: basto, Juagdor: numJugador}
+		otro ejemplo
+		servidor: {Canta: 40, Palo: oro, Jugador: 2}
+	
+	
 
 ... asi hasta que se acaba
 
@@ -103,14 +107,24 @@ for 14 veces:
 	
 	if algun jugador supera los 100 puntos y gana:
 	servidor: servidor: Final{Ganador: 1, 1: 110, 2: 30}
+	
+	if un juagdor tiene el 7, a ese jugador:
+		servidor: "Cambiar7"
+		cliente: True or cliente: False
+		y si lo ha cambiado, ha dicho true, se avisa a los demas:
+		{Cambiado: numJugador}
+	
+	if alguien canta:
+		servidor: {Canta: 20, Palo: basto, Juagdor: numJugador}
+		otro ejemplo
+		servidor: {Canta: 40, Palo: oro, Jugador: 2}
 
 	if final:
 		servidor: {Ganador: 1, 0: 110, 1: 30}
 
 	servidor: 
 		for clientes:
-			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
-			[espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]
+			{Cartas: [espada-3, espada-3, espada-3, espada-3, espada-3, espada-3]}
 
 cuando se acaba:
 
@@ -121,13 +135,13 @@ for 6 veces:
 
 	
 	Primero se manda a cada jugador las cartas que tiene
-	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	Servidor: {Cartas: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]}
 	
 	Despues el turno de quien es
 	servidor: {"1": null, "2": null, "Turno": 0, "Triunfo": null}
 	
 	Y del que es el turno se le manda que cartas puede jugar de su mano
-	Servidor: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]
+	Servidor: Cartas Posibles: [["espada", 3], ["copa", 11], ["oro", 10], ["basto", 6], ["oro", 5], ["oro", 11]]}
 	
 	cliente1: A: espada-3, numJugador
 
@@ -140,7 +154,12 @@ for 6 veces:
 	servidor: Mesa{1: ("espada", 3), 2: ("espada", 3)}, Turno{Null} 	
 	
 	
-	servidor: Ganador: 1  (o seria Ganador: 0)
+	servidor: {Ganador: 1}  (o seria Ganador: 0)
+	
+	if alguien canta:
+		servidor: {Canta: 20, Palo: basto, Juagdor: numJugador}
+		otro ejemplo
+		servidor: {Canta: 40, Palo: oro, Jugador: 2}
 
 	if final:
 		servidor: {Ganador: 1, 0: 110, 1: 30}
