@@ -115,11 +115,54 @@ def no_tengo_que_superar(mano, baza):
             cartasPosibles.append(mano[i])
     if len(cartasPosibles) > 0: return cartasPosibles;
     else: return mano;
+    
+ 
+def cantar_cambiar(mano, triunfo):
+    tiene_siete_triunfo = False
+    cantar_oro = False
+    cantar_basto = False
+    cantar_copa = False
+    cantar_espada = False
+        
+    for carta in mano:
+        palo, valor = carta
+        if valor == 7 and palo == triunfo[0]:
+            tiene_siete_triunfo = True
+    
+        if valor == 10 and palo == "oro":
+            for carta in mano:
+                palo, valor = carta
+                if palo == "oro" and valor == 12:
+                    cantar_oro = True
+                    
+        if valor == 10 and palo == "basto":
+            for carta in mano:
+                palo, valor = carta
+                if palo == "basto" and valor == 12:
+                    cantar_basto = True
+                    
+        if valor == 10 and palo == "copa":
+            for carta in mano:
+                palo, valor = carta
+                if palo == "copa" and valor == 12:
+                    cantar_copa = True
+                    
+        if valor == 10 and palo == "espada":
+            for carta in mano:
+                palo, valor = carta
+                if palo == "espada" and valor == 12:
+                    cantar_espada = True
+    
+    return tiene_siete_triunfo, cantar_oro, cantar_basto, cantar_copa, cantar_espada
+    
                 
 
 validez = que_cartas_puede_usar_jugador_arrastre([("basto", 2), ("basto", 11), ("oro", 3)], [("copa", 5), ("basto", 4)], "espada")
 
 suma = sumar_puntos([("espada", 3), ("espada", 1), ("basto", 5), ("oro", 5)])
+#print(suma)
+
+suma = cantar_cambiar([("espada", 10), ("espada", 12), ("espada", 7), ("oro", 10), ("oro", 12)], ("espada", 2))
 #print(suma)
 
 cartaGanadora = que_jugador_gana_baza([("espada", 3), ("espada", 1)], "oro")
