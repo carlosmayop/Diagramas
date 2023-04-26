@@ -5,10 +5,10 @@ import random
 import time
 import uuid
 
-from partida1 import Partida1
+#from partida1 import Partida1
 from partida2 import Partida2
-from partida3 import Partida3
-from partida4 import Partida4
+#from partida3 import Partida3
+#from partida4 import Partida4
 
 app = FastAPI()
 
