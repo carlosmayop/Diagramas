@@ -32,6 +32,7 @@ class Partida2:
         cantado1 = [False, False, False, False]
         
         vueltas = False
+        arrastre = False
         
         await self.send_message_to_all_sockets("Comienza partida")
         
@@ -39,23 +40,26 @@ class Partida2:
             
             manos = []
             mazo, triunfo, manos = await self.comienzo_partida()
+            arrastre = False
             
             for i in range(6):
                 puntosJugador0, puntosJugador1, manos, orden, orden_inicial, puede_cantar_cambiar= await self.ronda(triunfo, puntosJugador0, puntosJugador1, manos, orden, orden_inicial)    
                 if vueltas: 
                     ganador = self.comprobarGanador(puntosJugador0, puntosJugador1)
                     if ganador: break
-                cantado0, cantado1, puntosJugador0, puntosJugador1, triunfo = await self.cantar_cambiar_jugador(manos, triunfo, cantado0, cantado1, puntosJugador0, puntosJugador1, puede_cantar_cambiar)
+                cantado0, cantado1, puntosJugador0, puntosJugador1, triunfo = await self.cantar_cambiar_jugador(manos, triunfo, cantado0, cantado1, puntosJugador0, puntosJugador1, puede_cantar_cambiar, arrastre)
                 mazo, manos = await self.repartir(orden_inicial, mazo, triunfo, manos)
             
             await self.send_message_to_all_sockets("Arrastre")
-            
+            arrastre = True
             for i in range(6):
                 await self.mandar_manos(orden_inicial, manos)
                 orden, manos, puntosJugador0, puntosJugador1, indice_ganador = await self.arrastre(orden_inicial, orden, triunfo, puntosJugador0, puntosJugador1, manos)
                 if vueltas: 
                     ganador = self.comprobarGanador(puntosJugador0, puntosJugador1)
                     if ganador: break
+                cantado0, cantado1, puntosJugador0, puntosJugador1, triunfo = await self.cantar_cambiar_jugador(manos, triunfo, cantado0, cantado1, puntosJugador0, puntosJugador1, puede_cantar_cambiar, arrastre)
+
                 
             if puntosJugador0 > 100 and puntosJugador1 < 100:
                 mano_send = {"Ganador": 0, "0": puntosJugador0 ,"1": puntosJugador1}
@@ -268,7 +272,7 @@ class Partida2:
             await self.send_message_to_socket(str(i), message)
             
     #TODO cuando se les habilita, y demas cosa
-    async def cantar_cambiar_jugador(self, manos, triunfo, cantado0, cantado1, puntosJugador0, puntosJugador1, puede_cantar_cambiar):
+    async def cantar_cambiar_jugador(self, manos, triunfo, cantado0, cantado1, puntosJugador0, puntosJugador1, puede_cantar_cambiar, arrastre):
         for i in range(2):
             print("v")
             palo, valor = triunfo
@@ -280,7 +284,7 @@ class Partida2:
             
             if puede_cantar_cambiar == i:
                 
-                if tiene_siete_triunfo:
+                if tiene_siete_triunfo and not arrastre:
                     mano_send = "Cambiar7"
                     message = json.dumps(mano_send)
                     await self.send_message_to_socket(str(i), message)
@@ -291,7 +295,7 @@ class Partida2:
                         manos[i].append(triunfo)
                         triunfo = (palo, 7)
                         message = {"Cambiado": i}
-                        message = json.dumps(message)
+                        message = json.dumps(mano_send)
                         await self.send_message_to_socket(str(i), message)
                            
                 if cantar_oro and cantado[0] == False:
