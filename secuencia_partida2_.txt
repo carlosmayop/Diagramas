@@ -19,10 +19,10 @@ for 14 veces:
 
 	servidor: Mesa{2: Null, 1: Null}, Turno{1}, Triunfo{oro-3}
 
-	cliente1: N: espada-3
+	cliente1: espada-3
 	servidor: Mesa{1: espada-3, 2: null], Turno{2}, Triunfo{oro-3}
 
-	cliente1: N: espada-3
+	cliente1: espada-3
 	servidor: Mesa{1: espada-3, 2: espada-3], Turno{Null}	
 
 	servidor: {Ganador: 1}
