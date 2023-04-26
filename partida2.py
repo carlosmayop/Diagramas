@@ -36,7 +36,7 @@ class Partida2:
         
         await self.send_message_to_all_sockets("Comienza partida")
         
-        for i in range(2):
+        for i in range(14):
             
             manos = []
             mazo, triunfo, manos = await self.comienzo_partida()
